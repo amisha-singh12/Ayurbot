@@ -1,0 +1,30 @@
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #585858;">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+            <h1 style="font-family: 'Amita', cursive;"> &nbsp&nbsp प्रकृति &nbsp&nbsp</h1>
+            <span>.</span>
+        </a>
+
+        <!-- Nav Menu -->
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a></li>
+                <% if(user) { %>
+                <li><a href="/test" class="<%= currentPath === '/test' ? 'active' : '' %>">Take test</a></li>
+                <% } %>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <% if(user) { %>
+                <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+                <li><a href="/login" class="<%= currentPath === '/login' ? 'active' : '' %>">Login</a></li>
+                <li><a href="/signup" class="<%= currentPath === '/signup' ? 'active' : '' %>">Signup</a></li>
+                <% } %>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="btn-getstarted" href="<%= user ? '/test' : '/login' %>">Let's Explore</a>
+    </div>
+</header>

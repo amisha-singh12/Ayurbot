@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prakriti Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amita:wght@700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <!-- <link href="/assets/css/style-prakrititst.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Add authentication check -->
+    <% if (!user) { %>
+    <script>
+        window.location.href = '/login'
+    </script>
+    <% } %>
+
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Prakriti Identification</h1>
+        <form method="POST" action="/test">
+            <% questions.forEach((question, index) => { %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Question <%= index+1 %></h5>
+                    <p class="card-text"><%= question.text %></p>
+                    <div class="form-group">
+                        <% question.options.forEach((option, optIndex) => { %>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q<%= index %>"
+                                id="q<%= index %>-<%= optIndex %>" value="<%= optIndex %>" required>
+                            <label class="form-check-label" for="q<%= index %>-<%= optIndex %>">
+                                <%= option.text %>
+                            </label>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+            <button type="submit" class="btn btn-primary btn-block">Submit Test</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
