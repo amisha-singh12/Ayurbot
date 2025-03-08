@@ -82,8 +82,8 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
     ```bash
     Open http://localhost:3000 in your browser
 
- **Project Structure**
-    ```bash
+**Project Structure**
+```bash
     ayurbot/
 ├── models/              # MongoDB schema models
 │   ├── User.js
@@ -102,7 +102,7 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
 │   │   └── img/        # Images
 ├── app.js               # Main application file
 └── package.json
-
+```
 
 **License**
 This project is licensed under the MIT License - see the LICENSE file for details.
