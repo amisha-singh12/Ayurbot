@@ -6,7 +6,7 @@
 
 Ayurbot is a web application that helps users identify their Ayurvedic Prakriti (body constitution) through a carefully designed questionnaire. Based on ancient Ayurvedic principles, the system analyzes user responses to determine their dominant dosha (Vata, Pitta, or Kapha) and provides personalized recommendations.
 
-![Ayurbot Screenshot](/public/assets/img/screenshot.png) <!-- Add actual screenshot path -->
+![Ayurbot Screenshot](/public/Ayurbot_Screenshot.png) <!-- Add actual screenshot path -->
 
 ## Features
 
