@@ -74,10 +74,9 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
    MONGODB_URI=mongodb://localhost:27017/ayurbot
    SESSION_SECRET=your_session_secret_key
 
-4. **Install dependencies**
+4. **Start the development server**
    ```bash
-   npm install
+   npm run dev
 
-5. **Install dependencies**
-   ```bash
-   npm install
+5. **Access the application**
+   Open http://localhost:3000 in your browser
