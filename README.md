@@ -117,8 +117,8 @@ Bootstrap template inspiration
 Node.js community resources
 ```
 **Contact**
-```
 For support or inquiries:
+```
 Email: support@ayurbot.com
 GitHub: @yourusername
 ```
