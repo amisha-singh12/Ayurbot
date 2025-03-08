@@ -78,5 +78,5 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
    ```bash
    npm run dev
 
-5. **Access the application**
+5. **Access the application:**\n
    Open http://localhost:3000 in your browser
