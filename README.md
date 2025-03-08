@@ -109,13 +109,16 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
 This project is licensed under the MIT License - see the LICENSE file for details.
 ```
 **Acknowledgments**
+```
 Ayurvedic principles from classical texts
 
 Bootstrap template inspiration
 
 Node.js community resources
-
+```
 **Contact**
+```
 For support or inquiries:
 Email: support@ayurbot.com
 GitHub: @yourusername
+```
