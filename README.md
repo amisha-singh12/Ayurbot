@@ -78,5 +78,42 @@ Ayurbot is a web application that helps users identify their Ayurvedic Prakriti 
    ```bash
    npm run dev
 
-5. **Access the application:**\n
-   Open http://localhost:3000 in your browser
+5. **Access the application:**
+    ```bash
+    Open http://localhost:3000 in your browser
+
+ **Project Structure**
+ ```bash
+ ayurbot/
+├── models/              # MongoDB schema models
+│   ├── User.js
+│   └── PrakritiResult.js
+├── routes/              # Express routers
+│   ├── auth.js
+│   └── prakriti.js
+├── views/               # EJS templates
+│   ├── partials/        # Reusable components
+│   ├── auth/            # Authentication pages
+│   └── results/         # Dosha result pages
+├── public/              # Static assets
+│   ├── assets/
+│   │   ├── css/        # Stylesheets
+│   │   ├── js/         # Client-side scripts
+│   │   └── img/        # Images
+├── app.js               # Main application file
+└── package.json
+
+**License**
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Acknowledgments
+Ayurvedic principles from classical texts
+
+Bootstrap template inspiration
+
+Node.js community resources
+
+Contact
+For support or inquiries:
+Email: support@ayurbot.com
+GitHub: @yourusername
