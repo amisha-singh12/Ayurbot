@@ -1,2 +1,0 @@
-# Ayurbot
-SIH Project
