@@ -9,16 +9,30 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
-        if (!user) return res.redirect('/login');
+        const user = await User.findOne({ username: req.body.username });
+        if (!user) {
+            req.flash('error', 'Invalid credentials');
+            return res.redirect('/login');
+        }
 
         const validPass = await bcrypt.compare(req.body.password, user.password);
-        if (!validPass) return res.redirect('/login');
+        if (!validPass) {
+            req.flash('error', 'Invalid credentials');
+            return res.redirect('/login');
+        }
 
         req.session.user = user;
-        res.redirect('/test');
+        req.session.save(err => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).send('Server error');
+            }
+            res.redirect('/test');
+        });
+
     } catch (err) {
-        res.status(500).send(err.message);
+        console.error('Login error:', err);
+        res.status(500).send('Server error');
     }
 });
 
@@ -29,19 +43,25 @@ router.get('/signup', (req, res) => {
 router.post('/signup', async (req, res) => {
     try {
         const existingUser = await User.findOne({ email: req.body.email });
-        if (existingUser) return res.redirect('/signup');
+        if (existingUser) {
+            req.flash('error', 'Email already exists');
+            return res.redirect('/signup');
+        }
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
-            password: hashedPassword
+            password: req.body.password
         });
 
         await newUser.save();
+        req.flash('success', 'Registration successful! Please login');
         res.redirect('/login');
+
     } catch (err) {
-        res.status(500).send(err.message);
+        console.error('Signup error:', err);
+        req.flash('error', 'Registration failed');
+        res.redirect('/signup');
     }
 });
 
