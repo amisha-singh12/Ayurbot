@@ -11,8 +11,6 @@ const requireAuth = (req, res, next) => {
     next();
 };
 
-
-// Define questions in a shared space
 const questions = [
     {
         id: 1,
@@ -32,11 +30,9 @@ const questions = [
             { dosha: 'kapha', text: "Thick and moist" }
         ]
     },
-    // Add more questions here
 ];
 
 
-// Prakriti Test Page (GET)
 router.get('/test', requireAuth, (req, res) => {
     res.render('prakriti_index', {
         user: req.session.user,
@@ -44,13 +40,13 @@ router.get('/test', requireAuth, (req, res) => {
     });
 });
 
-// Process Test Results
+
 router.post('/test', requireAuth, async (req, res) => {
     try {
         const answers = req.body;
         const scores = { vata: 0, pitta: 0, kapha: 0 };
 
-        // Calculate scores
+
         Object.keys(answers).forEach(questionId => {
             const qId = parseInt(questionId);
             const selectedOption = parseInt(answers[questionId]);
@@ -61,13 +57,13 @@ router.post('/test', requireAuth, async (req, res) => {
             }
         });
 
-        // Determine dominant dosha
+
         const maxScore = Math.max(...Object.values(scores));
         const dominantDosha = Object.keys(scores).find(
             key => scores[key] === maxScore
         );
 
-        // Save result to database
+
         const result = new PrakritiResult({
             userId: req.session.user._id,
             scores: scores,
@@ -85,7 +81,8 @@ router.post('/test', requireAuth, async (req, res) => {
     }
 });
 
-// Display Result
+
+
 router.get('/result/:dosha', requireAuth, (req, res) => {
     const allowedDoshas = ['vata', 'pitta', 'kapha'];
     const dosha = req.params.dosha.toLowerCase();
@@ -100,7 +97,8 @@ router.get('/result/:dosha', requireAuth, (req, res) => {
     });
 });
 
-// Previous Results
+
+
 router.get('/history', requireAuth, async (req, res) => {
     try {
         const results = await PrakritiResult.find(
